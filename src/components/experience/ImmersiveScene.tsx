@@ -1,6 +1,6 @@
 import { useRef, useMemo, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Environment, Float, Stars, Sparkles, Text3D, Center, useTexture } from "@react-three/drei";
+import { Float, Stars, Sparkles } from "@react-three/drei";
 import { EffectComposer, Bloom, ChromaticAberration, Vignette } from "@react-three/postprocessing";
 import * as THREE from "three";
 import { onScrollProgress } from "@/hooks/use-lenis";
