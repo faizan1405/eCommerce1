@@ -163,7 +163,7 @@ function Particles({ count = 600 }: { count?: number }) {
       </bufferGeometry>
       <pointsMaterial
         size={0.015}
-        color={0xff003c}
+        color={0xffd60a}
         transparent
         opacity={0.55}
         sizeAttenuation
