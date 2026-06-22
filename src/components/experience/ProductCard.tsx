@@ -35,7 +35,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
           className="absolute inset-0 opacity-90 transition-opacity duration-700"
           style={{
             background:
-              "radial-gradient(120% 80% at 50% 110%, rgba(139,0,0,0.45), transparent 60%), radial-gradient(60% 50% at 50% 30%, rgba(255,0,60,0.12), transparent 70%), #0a0a0a",
+              "radial-gradient(120% 80% at 50% 110%, rgba(255,214,10,0.45), transparent 60%), radial-gradient(60% 50% at 50% 30%, rgba(255,195,0,0.12), transparent 70%), #0a0a0a",
           }}
         />
         <img
@@ -57,12 +57,12 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
         {/* Red hover rim */}
         <div
           className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          style={{ boxShadow: "inset 0 0 80px rgba(255,0,60,0.35), inset 0 0 1px rgba(255,0,60,0.6)" }}
+          style={{ boxShadow: "inset 0 0 80px rgba(255,195,0,0.35), inset 0 0 1px rgba(255,195,0,0.6)" }}
         />
 
         {/* Badge */}
         {product.badge && (
-          <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#FF003C] text-[10px] tracking-[0.25em] font-bold text-black">
+          <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#FFC300] text-[10px] tracking-[0.25em] font-bold text-black">
             <span className="h-1.5 w-1.5 rounded-full bg-black" />
             {product.badge}
           </div>
@@ -96,7 +96,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
               onClick={() => setSize(s)}
               className={`text-[10px] px-2.5 py-1 rounded border transition ${
                 size === s
-                  ? "border-[#FF003C] bg-[#FF003C]/15 text-white"
+                  ? "border-[#FFC300] bg-[#FFC300]/15 text-white"
                   : "border-white/10 text-white/55 hover:border-white/30 hover:text-white"
               }`}
             >
@@ -108,7 +108,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
           href={buildWhatsAppLink(product, size)}
           target="_blank"
           rel="noreferrer"
-          className="relative block w-full text-center py-3 rounded-lg font-display text-xs tracking-[0.32em] overflow-hidden group/btn border border-[#FF003C]/40 bg-gradient-to-r from-[#7A0000] via-[#8B0000] to-[#FF003C] text-white hover:shadow-blood transition-shadow"
+          className="relative block w-full text-center py-3 rounded-lg font-display text-xs tracking-[0.32em] overflow-hidden group/btn border border-[#FFC300]/40 bg-gradient-to-r from-[#0D0D0D] via-[#FFD60A] to-[#FFC300] text-white hover:shadow-blood transition-shadow"
         >
           <span className="relative z-10">BUY ON WHATSAPP →</span>
           <span className="absolute inset-0 bg-black opacity-0 group-hover/btn:opacity-15 transition-opacity" />

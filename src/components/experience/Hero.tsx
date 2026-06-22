@@ -1,20 +1,49 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y      = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const scale  = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const scale  = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
   const fade   = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
   const textY  = useTransform(scrollYProgress, [0, 1], ["0%", "-40%"]);
 
+  // 3D parallax tilt driven by pointer
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const rx = useSpring(useTransform(my, [-0.5, 0.5], [6, -6]), { stiffness: 80, damping: 18 });
+  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-8, 8]),  { stiffness: 80, damping: 18 });
+  const tx = useSpring(useTransform(mx, [-0.5, 0.5], [-18, 18]), { stiffness: 60, damping: 20 });
+  const ty = useSpring(useTransform(my, [-0.5, 0.5], [-12, 12]), { stiffness: 60, damping: 20 });
+
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      mx.set(e.clientX / window.innerWidth  - 0.5);
+      my.set(e.clientY / window.innerHeight - 0.5);
+    };
+    window.addEventListener("pointermove", onMove);
+    return () => window.removeEventListener("pointermove", onMove);
+  }, [mx, my]);
+
   return (
-    <section ref={ref} className="relative min-h-[100svh] w-full overflow-hidden">
-      {/* Model layer */}
+    <section ref={ref} className="relative min-h-[100svh] w-full overflow-hidden" style={{ perspective: 1400 }}>
+      {/* Golden rim halo BEHIND the model */}
       <motion.div
-        style={{ y, scale }}
-        className="absolute inset-0 z-[2]"
+        aria-hidden
+        style={{ x: tx, y: ty }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] w-[120vmin] h-[120vmin] rounded-full pointer-events-none animate-float-y"
+      >
+        <div className="absolute inset-0 rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(255,195,0,0.45) 0%, rgba(255,234,0,0.18) 30%, transparent 62%)", filter: "blur(40px)" }} />
+        <div className="absolute inset-[18%] rounded-full animate-pulse-gold"
+          style={{ background: "radial-gradient(circle, rgba(255,234,0,0.55), transparent 60%)" }} />
+      </motion.div>
+
+      {/* Model layer with 3D tilt */}
+      <motion.div
+        style={{ y, scale, rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }}
+        className="absolute inset-0 z-[2] will-change-transform"
       >
         <img
           src="/hero.jpg"
@@ -22,9 +51,9 @@ export function Hero() {
           className="h-full w-full object-cover object-[center_20%]"
           onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0"; }}
         />
-        {/* Liquid base behind model in case image missing */}
+        {/* Black liquid base behind model in case image missing */}
         <div className="absolute inset-0 -z-10 animate-liquid"
-          style={{ background: "radial-gradient(circle at 50% 60%, #1a0303, #050505 70%)" }} />
+          style={{ background: "radial-gradient(circle at 50% 60%, #141414, #050505 70%)" }} />
       </motion.div>
 
       {/* Color/depth gradients on top of model */}
@@ -34,9 +63,18 @@ export function Hero() {
             "linear-gradient(180deg, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.0) 30%, rgba(5,5,5,0.0) 60%, rgba(5,5,5,0.95) 100%), radial-gradient(80% 60% at 30% 50%, transparent, rgba(5,5,5,0.6))",
         }} />
 
-      {/* Red side glow */}
-      <div className="absolute inset-y-0 right-0 w-[60%] z-[3] pointer-events-none"
-        style={{ background: "radial-gradient(60% 60% at 80% 50%, rgba(255,0,60,0.18), transparent 70%)" }} />
+      {/* Gold side glow */}
+      <div className="absolute inset-y-0 right-0 w-[65%] z-[3] pointer-events-none"
+        style={{ background: "radial-gradient(60% 60% at 80% 50%, rgba(255,195,0,0.22), transparent 70%)" }} />
+
+      {/* Lightning streaks */}
+      <div aria-hidden className="absolute inset-0 z-[3] overflow-hidden pointer-events-none">
+        <div className="absolute -top-10 left-[15%] w-[2px] h-[60%] bg-gradient-to-b from-transparent via-[#FFEA00] to-transparent animate-lightning"
+             style={{ filter: "blur(1px)", boxShadow: "0 0 24px #FFC300" }} />
+        <div className="absolute -top-10 right-[20%] w-[1px] h-[70%] bg-gradient-to-b from-transparent via-[#FFD60A] to-transparent animate-lightning"
+             style={{ animationDelay: "2.5s", filter: "blur(1px)", boxShadow: "0 0 18px #FFD60A" }} />
+        <div className="absolute top-[30%] left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#FFEA00]/70 to-transparent animate-streak" />
+      </div>
 
       {/* Foreground content */}
       <motion.div
@@ -44,8 +82,8 @@ export function Hero() {
         className="relative z-[10] min-h-[100svh] flex flex-col justify-end pb-20 md:pb-28 px-6 md:px-12"
       >
         {/* Top eyebrow */}
-        <div className="absolute top-28 left-6 md:left-12 flex items-center gap-3 text-[10px] tracking-[0.45em] uppercase text-white/55">
-          <span className="h-px w-8 bg-[#FF003C]" />
+        <div className="absolute top-28 left-6 md:left-12 flex items-center gap-3 text-[10px] tracking-[0.45em] uppercase text-white/60">
+          <span className="h-px w-8 bg-[#FFC300]" />
           Volume 01 · Symbiote Drop · Bangalore
         </div>
 
@@ -63,7 +101,7 @@ export function Hero() {
             className="font-display text-[18vw] md:text-[10.5vw] leading-[0.85] tracking-[-0.01em] text-white"
           >
             BORN<br />
-            <span className="inline-block text-blood animate-flicker">SYMBIOTE</span>
+            <span className="inline-block text-gold animate-flicker">SYMBIOTE</span>
           </motion.h1>
 
           <motion.div
@@ -80,14 +118,14 @@ export function Hero() {
             <div className="flex flex-col gap-3">
               <a
                 href="#collections"
-                className="group relative inline-flex items-center justify-center gap-3 px-7 py-4 rounded-lg border border-[#FF003C]/40 bg-gradient-to-r from-[#7A0000] to-[#FF003C] text-white font-display text-xs tracking-[0.4em] overflow-hidden hover:shadow-blood transition-shadow"
+                className="btn-gold group relative inline-flex items-center justify-center gap-3 px-7 py-4 rounded-lg font-display text-xs tracking-[0.4em] overflow-hidden"
               >
                 <span className="relative z-10">SHOP THE DROP</span>
                 <span aria-hidden className="relative z-10 transition-transform group-hover:translate-x-1">→</span>
               </a>
               <a
                 href="/new-arrivals"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-lg border border-white/15 text-white/85 font-display text-xs tracking-[0.4em] hover:border-white/40 hover:text-white transition"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-lg border border-white/15 text-white/85 font-display text-xs tracking-[0.4em] hover:border-[#FFC300]/60 hover:text-[#FFEA00] transition"
               >
                 NEW ARRIVALS
               </a>
@@ -97,9 +135,9 @@ export function Hero() {
       </motion.div>
 
       {/* Scroll cue */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[11] flex flex-col items-center gap-2 text-[10px] tracking-[0.45em] uppercase text-white/40">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[11] flex flex-col items-center gap-2 text-[10px] tracking-[0.45em] uppercase text-white/45">
         <span>SCROLL</span>
-        <span className="h-10 w-px bg-gradient-to-b from-white/40 to-transparent" />
+        <span className="h-10 w-px bg-gradient-to-b from-[#FFC300]/60 to-transparent" />
       </div>
     </section>
   );

@@ -35,7 +35,7 @@ function NewArrivalsPage() {
   return (
     <main className="bg-black text-white pt-32">
       <section className="px-5 md:px-10 pb-10">
-        <div className="text-[10px] tracking-[0.45em] uppercase text-[#FF003C] mb-4">/ The Drop</div>
+        <div className="text-[10px] tracking-[0.45em] uppercase text-[#FFC300] mb-4">/ The Drop</div>
         <h1 className="font-display text-6xl md:text-8xl leading-[0.9]">NEW<br /><span className="text-blood">ARRIVALS</span></h1>
         <p className="mt-6 max-w-xl text-white/65">Fresh blood. 50+ pieces from the latest Symbiote wave. Filter, sort, lock it in via WhatsApp.</p>
       </section>
@@ -47,7 +47,7 @@ function NewArrivalsPage() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search..."
-            className="bg-black/60 border border-white/10 rounded-lg px-4 py-2 text-sm w-48 outline-none focus:border-[#FF003C]/60"
+            className="bg-black/60 border border-white/10 rounded-lg px-4 py-2 text-sm w-48 outline-none focus:border-[#FFC300]/60"
           />
           <div className="flex flex-wrap gap-2">
             {(["ALL", ...CATEGORIES] as const).map((c) => (
@@ -56,7 +56,7 @@ function NewArrivalsPage() {
                 onClick={() => setCat(c)}
                 className={`text-[10px] tracking-[0.3em] uppercase px-3 py-1.5 rounded-md border transition ${
                   cat === c
-                    ? "border-[#FF003C] bg-[#FF003C]/15 text-white"
+                    ? "border-[#FFC300] bg-[#FFC300]/15 text-white"
                     : "border-white/10 text-white/55 hover:border-white/30"
                 }`}
               >

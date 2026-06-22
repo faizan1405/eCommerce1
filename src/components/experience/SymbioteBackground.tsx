@@ -49,34 +49,38 @@ const frag = /* glsl */ `
 
     float t = uTime * 0.08;
 
-    // Domain-warped liquid
+    // Domain-warped liquid (black smoke)
     vec2 q = vec2(fbm(p + t), fbm(p - t + 5.2));
     vec2 r = vec2(fbm(p + q + vec2(1.7,9.2) + t*1.5), fbm(p + q + vec2(8.3,2.8) - t));
     float liquid = fbm(p + r * 1.6 + uMouse*0.25);
 
-    // Base near-black, deepened by liquid
-    vec3 base = vec3(0.02, 0.015, 0.02);
+    // Deep ink base
+    vec3 base = vec3(0.025, 0.022, 0.018);
     vec3 ink  = vec3(0.0);
 
-    // Red rim where liquid is thin
-    float rim = smoothstep(0.45, 0.62, liquid) - smoothstep(0.62, 0.85, liquid);
-    vec3 red  = vec3(1.0, 0.0, 0.235) * rim * 0.55;
+    // Golden rim where liquid is thin
+    float rim  = smoothstep(0.44, 0.60, liquid) - smoothstep(0.60, 0.82, liquid);
+    vec3  gold = vec3(1.0, 0.78, 0.0) * rim * 0.55;
 
-    // Deep blood pools
-    float pool = smoothstep(0.7, 1.0, liquid);
-    vec3  blood = vec3(0.55, 0.0, 0.0) * pool * 0.35;
+    // Hot neon-yellow core pools
+    float pool = smoothstep(0.72, 1.0, liquid);
+    vec3  neon = vec3(1.0, 0.92, 0.0) * pool * 0.38;
 
-    // Scroll-driven crimson wash on the right
-    float wash = smoothstep(0.6, 1.0, uv.x) * uScroll * 0.25;
-    red += vec3(1.0, 0.0, 0.235) * wash;
+    // Scroll-driven golden wash on the right
+    float wash = smoothstep(0.55, 1.0, uv.x) * uScroll * 0.28;
+    gold += vec3(1.0, 0.84, 0.0) * wash;
+
+    // Lightning-like vertical streaks
+    float bolt = smoothstep(0.985, 1.0, fbm(vec2(uv.x * 18.0, uTime * 0.6)));
+    gold += vec3(1.0, 0.95, 0.4) * bolt * 0.6;
 
     // Vignette
-    float vig = smoothstep(1.2, 0.3, length(p));
+    float vig = smoothstep(1.25, 0.3, length(p));
 
-    vec3 col = mix(ink, base, vig) + red + blood;
+    vec3 col = mix(ink, base, vig) + gold + neon;
 
     // Film grain
-    col += (hash(uv * uRes + uTime) - 0.5) * 0.03;
+    col += (hash(uv * uRes + uTime) - 0.5) * 0.025;
 
     gl_FragColor = vec4(col, 1.0);
   }
@@ -159,7 +163,7 @@ function Particles({ count = 600 }: { count?: number }) {
       </bufferGeometry>
       <pointsMaterial
         size={0.015}
-        color={0xff003c}
+        color={0xffd60a}
         transparent
         opacity={0.55}
         sizeAttenuation
