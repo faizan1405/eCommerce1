@@ -27,8 +27,8 @@ function SectionHeader({
   return (
     <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
       <div>
-        <div className="flex items-center gap-3 text-[10px] tracking-[0.45em] uppercase text-[#FF003C] mb-4">
-          <span className="h-px w-8 bg-[#FF003C]" />
+        <div className="flex items-center gap-3 text-[10px] tracking-[0.45em] uppercase text-[#FFC300] mb-4">
+          <span className="h-px w-8 bg-[#FFC300]" />
           {eyebrow}
         </div>
         <h2 className="font-display text-5xl md:text-7xl leading-[0.9] tracking-[-0.01em]">
@@ -39,7 +39,7 @@ function SectionHeader({
       {cta && (
         <Link
           to={cta.to as "/new-arrivals"}
-          className="self-start md:self-end inline-flex items-center gap-3 px-5 py-3 rounded-lg border border-white/15 text-[11px] tracking-[0.35em] uppercase hover:border-[#FF003C] hover:text-[#FF003C] transition"
+          className="self-start md:self-end inline-flex items-center gap-3 px-5 py-3 rounded-lg border border-white/15 text-[11px] tracking-[0.35em] uppercase hover:border-[#FFC300] hover:text-[#FFC300] transition"
         >
           {cta.label} →
         </Link>
@@ -108,10 +108,10 @@ export function LimitedDropsSection() {
   return (
     <section className="relative z-10 px-5 md:px-10 py-28">
       <div
-        className="relative rounded-3xl overflow-hidden border border-[#FF003C]/20 p-8 md:p-14"
+        className="relative rounded-3xl overflow-hidden border border-[#FFC300]/20 p-8 md:p-14"
         style={{
           background:
-            "radial-gradient(60% 80% at 80% 20%, rgba(255,0,60,0.18), transparent 70%), linear-gradient(180deg, #0a0a0a, #050505)",
+            "radial-gradient(60% 80% at 80% 20%, rgba(255,195,0,0.18), transparent 70%), linear-gradient(180deg, #0a0a0a, #050505)",
         }}
       >
         <SectionHeader
@@ -145,7 +145,7 @@ export function FeaturedCollection() {
           <img src={productImage(featured.id)} alt={featured.name} className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
           <div className="absolute bottom-6 left-6 right-6">
-            <div className="text-[10px] tracking-[0.4em] text-[#FF003C] mb-2">/ Featured</div>
+            <div className="text-[10px] tracking-[0.4em] text-[#FFC300] mb-2">/ Featured</div>
             <h3 className="font-display text-3xl text-white">{featured.name}</h3>
           </div>
         </motion.div>
@@ -155,7 +155,7 @@ export function FeaturedCollection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="text-[10px] tracking-[0.45em] uppercase text-[#FF003C] mb-4">
+          <div className="text-[10px] tracking-[0.45em] uppercase text-[#FFC300] mb-4">
             / Editor's Cut
           </div>
           <h2 className="font-display text-5xl md:text-7xl leading-[0.9] mb-6">
@@ -168,7 +168,7 @@ export function FeaturedCollection() {
           </p>
           <Link
             to="/categories"
-            className="inline-flex items-center gap-3 px-7 py-4 rounded-lg border border-[#FF003C]/50 bg-gradient-to-r from-[#7A0000] to-[#FF003C] text-white font-display text-xs tracking-[0.4em] hover:shadow-blood transition"
+            className="inline-flex items-center gap-3 px-7 py-4 rounded-lg border border-[#FFC300]/50 bg-gradient-to-r from-[#0D0D0D] to-[#FFC300] text-white font-display text-xs tracking-[0.4em] hover:shadow-blood transition"
           >
             EXPLORE THE CAPSULE →
           </Link>
@@ -198,7 +198,7 @@ export function ShopByCategory() {
                 alt={cat}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20 group-hover:from-[#7A0000]/80 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20 group-hover:from-[#0D0D0D]/80 transition-colors duration-500" />
               <div className="absolute inset-0 flex flex-col justify-end p-4">
                 <div className="text-[9px] tracking-[0.35em] text-white/50 mb-1">/0{i + 1}</div>
                 <div className="font-display text-base md:text-lg leading-tight text-white">{cat}</div>
@@ -231,7 +231,7 @@ export function RunwaySection() {
               <img src={productImage(p.id)} alt={p.name} className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
-                <div className="text-[10px] tracking-[0.3em] text-[#FF003C] mb-1">{p.category}</div>
+                <div className="text-[10px] tracking-[0.3em] text-[#FFC300] mb-1">{p.category}</div>
                 <div className="font-display text-lg text-white leading-tight">{p.name}</div>
               </div>
             </div>
@@ -252,7 +252,7 @@ export function MarqueeText() {
         {loop.map((t, i) => (
           <span key={i} className="flex items-center gap-12">
             {t}
-            <span className="text-[#FF003C]">✦</span>
+            <span className="text-[#FFC300]">✦</span>
           </span>
         ))}
       </div>
@@ -282,7 +282,7 @@ export function ReviewsSection() {
             transition={{ delay: i * 0.1 }}
             className="relative rounded-2xl p-6 glass border-white/5 chrome-edge"
           >
-            <div className="text-[#FF003C] text-2xl mb-3">★★★★★</div>
+            <div className="text-[#FFC300] text-2xl mb-3">★★★★★</div>
             <p className="text-white/75 text-sm leading-relaxed mb-6">"{r.text}"</p>
             <div className="text-xs tracking-[0.2em] text-white/50 uppercase">
               {r.name} · {r.city}
@@ -318,7 +318,7 @@ export function InstagramFeed() {
               style={{ transform: i % 2 === 0 ? "translateY(0)" : "translateY(12px)" }}
             >
               <img src={productImage(p.id)} alt={p.name} className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-[#7A0000]/60 transition-colors flex items-end p-3">
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-[#0D0D0D]/60 transition-colors flex items-end p-3">
                 <div className="text-[10px] tracking-[0.3em] text-white/0 group-hover:text-white transition">VIEW POST →</div>
               </div>
             </a>

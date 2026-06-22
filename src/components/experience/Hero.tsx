@@ -36,7 +36,7 @@ export function Hero() {
 
       {/* Red side glow */}
       <div className="absolute inset-y-0 right-0 w-[60%] z-[3] pointer-events-none"
-        style={{ background: "radial-gradient(60% 60% at 80% 50%, rgba(255,0,60,0.18), transparent 70%)" }} />
+        style={{ background: "radial-gradient(60% 60% at 80% 50%, rgba(255,195,0,0.18), transparent 70%)" }} />
 
       {/* Foreground content */}
       <motion.div
@@ -45,7 +45,7 @@ export function Hero() {
       >
         {/* Top eyebrow */}
         <div className="absolute top-28 left-6 md:left-12 flex items-center gap-3 text-[10px] tracking-[0.45em] uppercase text-white/55">
-          <span className="h-px w-8 bg-[#FF003C]" />
+          <span className="h-px w-8 bg-[#FFC300]" />
           Volume 01 · Symbiote Drop · Bangalore
         </div>
 
@@ -80,7 +80,7 @@ export function Hero() {
             <div className="flex flex-col gap-3">
               <a
                 href="#collections"
-                className="group relative inline-flex items-center justify-center gap-3 px-7 py-4 rounded-lg border border-[#FF003C]/40 bg-gradient-to-r from-[#7A0000] to-[#FF003C] text-white font-display text-xs tracking-[0.4em] overflow-hidden hover:shadow-blood transition-shadow"
+                className="group relative inline-flex items-center justify-center gap-3 px-7 py-4 rounded-lg border border-[#FFC300]/40 bg-gradient-to-r from-[#0D0D0D] to-[#FFC300] text-white font-display text-xs tracking-[0.4em] overflow-hidden hover:shadow-blood transition-shadow"
               >
                 <span className="relative z-10">SHOP THE DROP</span>
                 <span aria-hidden className="relative z-10 transition-transform group-hover:translate-x-1">→</span>
