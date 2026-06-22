@@ -11,22 +11,22 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { Navigation } from "@/components/experience/Navigation";
-import { WhatsAppButton } from "@/components/experience/WhatsAppButton";
-import { Footer } from "@/components/experience/Footer";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black px-4 text-white">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-display text-8xl text-blood">404</h1>
-        <h2 className="mt-4 font-display text-xl tracking-wider">PAGE NOT FOUND</h2>
-        <p className="mt-2 text-sm text-white/60">
-          This piece is sold out. Or never existed.
+        <h1 className="text-7xl font-bold text-foreground">404</h1>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
-          <Link to="/" className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-[#7A0000] to-[#FF003C] px-5 py-3 text-xs tracking-[0.35em] uppercase">
-            Back to the Hauz
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Go home
           </Link>
         </div>
       </div>
@@ -42,18 +42,30 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black px-4 text-white">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-display text-xl tracking-wider">SYMBIOTE GLITCH</h1>
-        <p className="mt-2 text-sm text-white/60">Something went sideways. Try again.</p>
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+          This page didn't load
+        </h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Something went wrong on our end. You can try refreshing or head back home.
+        </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => { router.invalidate(); reset(); }}
-            className="rounded-md bg-gradient-to-r from-[#7A0000] to-[#FF003C] px-5 py-3 text-xs tracking-[0.35em] uppercase"
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Retry
+            Try again
           </button>
-          <a href="/" className="rounded-md border border-white/20 px-5 py-3 text-xs tracking-[0.35em] uppercase">Home</a>
+          <a
+            href="/"
+            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+          >
+            Go home
+          </a>
         </div>
       </div>
     </div>
@@ -65,22 +77,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Thrift Hauz — Dark Luxury Streetwear · Born Symbiote" },
-      { name: "description", content: "Premium dark streetwear from Bangalore. Heavyweight hoodies, oversized tees, baggy cargos, chunky sneakers. Limited drops. Order on WhatsApp." },
+      { title: "Thrift Hauz — One Stop Place For All Exclusive Thrifts" },
+      { name: "description", content: "Step into Thrift Hauz: an immersive WebGL fashion universe of exclusive curated thrift streetwear. Oversized tees, hoodies, jackets, cargos & sneakers." },
       { name: "author", content: "Thrift Hauz" },
       { name: "theme-color", content: "#050505" },
-      { property: "og:title", content: "Thrift Hauz — Born Symbiote" },
-      { property: "og:description", content: "Premium dark streetwear. Limited drops. WhatsApp to order." },
+      { property: "og:title", content: "Thrift Hauz — One Stop Place For All Exclusive Thrifts" },
+      { property: "og:description", content: "Step into Thrift Hauz: an immersive WebGL fashion universe of exclusive curated thrift streetwear. Oversized tees, hoodies, jackets, cargos & sneakers." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Thrift Hauz — Born Symbiote" },
-      { name: "twitter:description", content: "Premium dark streetwear from Bangalore." },
+      { name: "twitter:title", content: "Thrift Hauz — One Stop Place For All Exclusive Thrifts" },
+      { name: "twitter:description", content: "Step into Thrift Hauz: an immersive WebGL fashion universe of exclusive curated thrift streetwear. Oversized tees, hoodies, jackets, cargos & sneakers." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/838beddf-679c-4ba4-b19e-deea95b58787" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/838beddf-679c-4ba4-b19e-deea95b58787" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Inter:wght@300;400;500;600&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -91,7 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
@@ -108,10 +122,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Navigation />
+      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      <Footer />
-      <WhatsAppButton />
     </QueryClientProvider>
   );
 }
