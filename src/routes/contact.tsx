@@ -18,7 +18,7 @@ function ContactPage() {
   return (
     <main className="bg-black text-white pt-32 min-h-screen">
       <section className="px-5 md:px-12">
-        <div className="text-[10px] tracking-[0.45em] uppercase text-[#FFC300] mb-4">/ Reach</div>
+        <div className="text-[10px] tracking-[0.45em] uppercase text-[#FF003C] mb-4">/ Reach</div>
         <h1 className="font-display text-6xl md:text-8xl leading-[0.9]">TALK TO<br /><span className="text-blood">THE HAUZ</span></h1>
         <p className="mt-6 max-w-xl text-white/65">Fastest response is WhatsApp. We're based in Bangalore. We ship pan-India.</p>
       </section>
@@ -39,15 +39,15 @@ function ContactPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="group relative p-8 md:p-10 rounded-3xl border border-white/10 glass-dark chrome-edge overflow-hidden hover:border-[#FFC300]/40 transition"
+            className="group relative p-8 md:p-10 rounded-3xl border border-white/10 glass-dark chrome-edge overflow-hidden hover:border-[#FF003C]/40 transition"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-              style={{ background: "radial-gradient(circle at 80% 20%, rgba(255,195,0,0.15), transparent 60%)" }} />
+              style={{ background: "radial-gradient(circle at 80% 20%, rgba(255,0,60,0.15), transparent 60%)" }} />
             <div className="relative">
-              <div className="text-[10px] tracking-[0.4em] uppercase text-[#FFC300] mb-3">/ {c.eyebrow}</div>
+              <div className="text-[10px] tracking-[0.4em] uppercase text-[#FF003C] mb-3">/ {c.eyebrow}</div>
               <div className="font-display text-3xl md:text-4xl mb-2">{c.title}</div>
               <div className="text-white/65 text-lg mb-6">{c.value}</div>
-              <div className="text-[11px] tracking-[0.35em] uppercase text-white/80 group-hover:text-[#FFC300] transition">{c.cta}</div>
+              <div className="text-[11px] tracking-[0.35em] uppercase text-white/80 group-hover:text-[#FF003C] transition">{c.cta}</div>
             </div>
           </motion.a>
         ))}
@@ -55,7 +55,7 @@ function ContactPage() {
 
       <section className="px-5 md:px-12 pb-32">
         <div className="rounded-3xl border border-white/10 p-8 md:p-14 glass-dark text-center">
-          <div className="text-[10px] tracking-[0.4em] uppercase text-[#FFC300] mb-3">/ Visit</div>
+          <div className="text-[10px] tracking-[0.4em] uppercase text-[#FF003C] mb-3">/ Visit</div>
           <div className="font-display text-3xl md:text-5xl">BANGALORE · INDIA</div>
           <p className="text-white/60 mt-4 max-w-xl mx-auto">By appointment only. DM us on Instagram to coordinate a studio visit.</p>
         </div>

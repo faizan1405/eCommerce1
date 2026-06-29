@@ -39,9 +39,9 @@ export function Navigation() {
           <div className="flex items-center justify-between px-5 md:px-7 h-14 md:h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group">
-              <span className="relative inline-block h-2.5 w-2.5 rounded-full bg-[#FFC300] animate-pulse-red" />
+              <span className="relative inline-block h-2.5 w-2.5 rounded-full bg-[#FF003C] animate-pulse-red" />
               <span className="font-display text-xl md:text-2xl tracking-[0.18em] text-white">
-                THRIFT<span className="text-[#FFC300]">·</span>HAUZ
+                THRIFT<span className="text-[#FF003C]">·</span>HAUZ
               </span>
             </Link>
 
@@ -56,7 +56,7 @@ export function Navigation() {
                   activeOptions={{ exact: item.to === "/" }}
                 >
                   {item.label}
-                  <span className="absolute left-4 right-4 -bottom-0.5 h-px bg-[#FFC300] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                  <span className="absolute left-4 right-4 -bottom-0.5 h-px bg-[#FF003C] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
                 </Link>
               ))}
             </nav>
@@ -66,14 +66,14 @@ export function Navigation() {
               <button
                 onClick={() => setSearch((s) => !s)}
                 aria-label="Search"
-                className="h-10 w-10 grid place-items-center rounded-xl glass-dark chrome-edge hover:bg-[#FFC300]/15 transition"
+                className="h-10 w-10 grid place-items-center rounded-xl glass-dark chrome-edge hover:bg-[#FF003C]/15 transition"
               >
                 <Search className="h-4 w-4" />
               </button>
               <a
                 href="#collections"
                 aria-label="Shop"
-                className="hidden md:grid h-10 w-10 place-items-center rounded-xl glass-dark chrome-edge hover:bg-[#FFC300]/15 transition"
+                className="hidden md:grid h-10 w-10 place-items-center rounded-xl glass-dark chrome-edge hover:bg-[#FF003C]/15 transition"
               >
                 <ShoppingBag className="h-4 w-4" />
               </a>
@@ -93,7 +93,7 @@ export function Navigation() {
               <input
                 autoFocus
                 placeholder="Search the Hauz — Hoodies, Cargos, Sneakers..."
-                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm tracking-wide outline-none focus:border-[#FFC300]/60"
+                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm tracking-wide outline-none focus:border-[#FF003C]/60"
               />
             </div>
           )}
@@ -127,7 +127,7 @@ export function Navigation() {
                 <Link
                   to={item.to}
                   onClick={() => setOpen(false)}
-                  className="block font-display text-3xl tracking-wider text-white/90 hover:text-[#FFC300] transition py-2"
+                  className="block font-display text-3xl tracking-wider text-white/90 hover:text-[#FF003C] transition py-2"
                 >
                   {item.label}
                 </Link>

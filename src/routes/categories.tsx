@@ -24,7 +24,7 @@ function CategoriesPage() {
   return (
     <main className="bg-black text-white pt-28">
       <section className="px-5 md:px-10">
-        <div className="text-[10px] tracking-[0.45em] uppercase text-[#FFC300] mb-4">/ The Wardrobe</div>
+        <div className="text-[10px] tracking-[0.45em] uppercase text-[#FF003C] mb-4">/ The Wardrobe</div>
         <h1 className="font-display text-6xl md:text-8xl leading-[0.9]">SHOP BY<br /><span className="text-blood">CATEGORY</span></h1>
       </section>
 
@@ -37,7 +37,7 @@ function CategoriesPage() {
               onClick={() => setActive(c)}
               className={`text-[11px] tracking-[0.3em] uppercase px-4 py-2 rounded-lg border transition whitespace-nowrap ${
                 active === c
-                  ? "border-[#FFC300] bg-gradient-to-r from-[#0D0D0D] to-[#FFC300] text-white"
+                  ? "border-[#FF003C] bg-gradient-to-r from-[#7A0000] to-[#FF003C] text-white"
                   : "border-white/10 text-white/65 hover:border-white/30 hover:text-white"
               }`}
             >
@@ -64,7 +64,7 @@ function CategoriesPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
             <div className="absolute inset-0 flex items-end p-8 md:p-14">
               <div>
-                <div className="text-[11px] tracking-[0.45em] uppercase text-[#FFC300] mb-3">/ Collection</div>
+                <div className="text-[11px] tracking-[0.45em] uppercase text-[#FF003C] mb-3">/ Collection</div>
                 <h2 className="font-display text-5xl md:text-7xl leading-none">{active}</h2>
                 <div className="mt-2 text-white/60 text-sm">{list.length} pieces in stock</div>
               </div>

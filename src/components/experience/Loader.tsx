@@ -27,17 +27,17 @@ export function Loader({ onDone }: { onDone?: () => void }) {
       }`}
     >
       <div className="absolute inset-0"
-        style={{ background: "radial-gradient(circle at 50% 50%, rgba(255,214,10,0.25), transparent 60%)" }} />
+        style={{ background: "radial-gradient(circle at 50% 50%, rgba(139,0,0,0.25), transparent 60%)" }} />
       <div className="relative text-center">
         <div className="font-display text-5xl md:text-7xl tracking-wider mb-6">
-          THRIFT<span className="text-[#FFC300]">·</span>HAUZ
+          THRIFT<span className="text-[#FF003C]">·</span>HAUZ
         </div>
         <div className="text-[10px] tracking-[0.5em] uppercase text-white/40 mb-6">
           Entering The Hauz
         </div>
         <div className="h-px w-64 mx-auto bg-white/10 overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-[#0D0D0D] to-[#FFC300] transition-[width] duration-100"
+            className="h-full bg-gradient-to-r from-[#7A0000] to-[#FF003C] transition-[width] duration-100"
             style={{ width: `${progress * 100}%` }}
           />
         </div>

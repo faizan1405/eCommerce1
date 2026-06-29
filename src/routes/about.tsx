@@ -23,7 +23,7 @@ function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/40" />
         <div className="absolute inset-0 flex items-end p-6 md:p-12 pb-20">
           <motion.div initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1 }}>
-            <div className="text-[10px] tracking-[0.45em] uppercase text-[#FFC300] mb-4">/ The Hauz</div>
+            <div className="text-[10px] tracking-[0.45em] uppercase text-[#FF003C] mb-4">/ The Hauz</div>
             <h1 className="font-display text-6xl md:text-9xl leading-[0.85]">
               BORN FROM<br /><span className="text-blood">THE UNDERGROUND</span>
             </h1>
@@ -35,7 +35,7 @@ function AboutPage() {
       <section className="px-5 md:px-12 py-28">
         <div className="grid md:grid-cols-12 gap-10 md:gap-16">
           <div className="md:col-span-4">
-            <div className="text-[10px] tracking-[0.4em] uppercase text-[#FFC300] mb-4">/ 01 — Origin</div>
+            <div className="text-[10px] tracking-[0.4em] uppercase text-[#FF003C] mb-4">/ 01 — Origin</div>
             <h2 className="font-display text-3xl md:text-5xl leading-[0.95]">From a garage in Bangalore.</h2>
           </div>
           <div className="md:col-span-8 text-white/70 text-lg leading-relaxed space-y-5 max-w-2xl">
@@ -66,7 +66,7 @@ function AboutPage() {
 
       {/* Manifesto */}
       <section className="px-5 md:px-12 py-28 text-center">
-        <div className="text-[10px] tracking-[0.45em] uppercase text-[#FFC300] mb-4">/ Manifesto</div>
+        <div className="text-[10px] tracking-[0.45em] uppercase text-[#FF003C] mb-4">/ Manifesto</div>
         <h2 className="font-display text-4xl md:text-7xl leading-[0.9] max-w-5xl mx-auto">
           WE DON'T MAKE CLOTHES.<br />
           <span className="text-blood">WE FORGE ARMOR</span>

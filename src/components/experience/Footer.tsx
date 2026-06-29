@@ -16,7 +16,7 @@ export function Footer() {
             </p>
           </div>
           <div className="md:col-span-2">
-            <div className="text-[10px] tracking-[0.4em] uppercase text-[#FFC300] mb-4">/ Shop</div>
+            <div className="text-[10px] tracking-[0.4em] uppercase text-[#FF003C] mb-4">/ Shop</div>
             <ul className="space-y-2 text-sm text-white/70">
               <li><Link to="/new-arrivals" className="hover:text-white">New Arrivals</Link></li>
               <li><Link to="/categories" className="hover:text-white">Categories</Link></li>
@@ -25,7 +25,7 @@ export function Footer() {
             </ul>
           </div>
           <div className="md:col-span-2">
-            <div className="text-[10px] tracking-[0.4em] uppercase text-[#FFC300] mb-4">/ Hauz</div>
+            <div className="text-[10px] tracking-[0.4em] uppercase text-[#FF003C] mb-4">/ Hauz</div>
             <ul className="space-y-2 text-sm text-white/70">
               <li><Link to="/about" className="hover:text-white">About</Link></li>
               <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
@@ -33,7 +33,7 @@ export function Footer() {
             </ul>
           </div>
           <div className="md:col-span-3">
-            <div className="text-[10px] tracking-[0.4em] uppercase text-[#FFC300] mb-4">/ Contact</div>
+            <div className="text-[10px] tracking-[0.4em] uppercase text-[#FF003C] mb-4">/ Contact</div>
             <ul className="space-y-2 text-sm text-white/70">
               <li><a href={`tel:${CONTACT_PHONE.replace(/\s/g, "")}`} className="hover:text-white">{CONTACT_PHONE}</a></li>
               <li><a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white">{CONTACT_EMAIL}</a></li>
