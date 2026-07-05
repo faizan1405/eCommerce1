@@ -12,4 +12,10 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Hard-pin the Nitro deploy target to Vercel. Without this, Nitro defaults to
+  // the cloudflare-module preset, producing output Vercel can't serve (platform 404).
+  // The `vercel` preset emits Build Output API format (.vercel/output) that Vercel serves directly.
+  nitro: {
+    preset: "vercel",
+  },
 });
