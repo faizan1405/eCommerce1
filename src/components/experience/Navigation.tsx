@@ -39,7 +39,7 @@ export function Navigation() {
           <div className="flex items-center justify-between px-5 md:px-7 h-14 md:h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group">
-              <span className="relative inline-block h-2.5 w-2.5 rounded-full bg-[#FF003C] animate-pulse-red" />
+              <img src="/favicon.png" alt="Thrift Hauz logo" className="h-7 w-7 rounded-md object-cover shrink-0" />
               <span className="font-display text-xl md:text-2xl tracking-[0.18em] text-white">
                 THRIFT<span className="text-[#FF003C]">·</span>HAUZ
               </span>
